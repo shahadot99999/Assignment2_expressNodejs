@@ -1,9 +1,113 @@
 import express, { type Application, type Request, type Response } from "express";
-const app = express()
-const port = 5000
+ import  { Pool } from "pg";
+ import config from "./config";
 
-app.get('/', (req :Request, res: Response) => {
-  res.send('Hello World!')
+const app : Application = express()
+//const port = config.port
+const port = 5000;
+
+
+app.use(express.json());
+ app.use(express.text());
+ app.use(express.urlencoded({extended : true}))
+
+//database neon connection
+const pool = new Pool({
+  connectionString: config.connection_string,
+});
+
+//table Create
+const initDB = async()=>{
+  try {
+  // 1. Create Users Table
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        role VARCHAR(50) DEFAULT 'contributor' CHECK (role IN ('contributor', 'maintainer')),
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+
+    // 2. Create Issues Table (Needed for tomorrow)
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS issues (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(150) NOT NULL,
+        description TEXT NOT NULL,
+        type VARCHAR(50) CHECK (type IN ('bug', 'feature_request')),
+        status VARCHAR(50) DEFAULT 'open' CHECK (status IN ('open', 'in_progress', 'resolved')),
+        reporter_id INT NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+    `);
+      console.log("Database connection successfully!");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+initDB();
+
+//browser loading
+app.get('/', (req : Request, res : Response) => {
+  //res.send('Express Server');
+  res.status(200).json({
+    message:"Express Server",
+    "author": "Cute Programer",
+  })
+})
+
+
+//create users
+// app.post("/api/users", async(req : Request, res: Response)=>{
+//     //console.log(req.body);
+//     // const body= req.body;
+//     const {name, email, password, role}= req.body;
+
+//     try {
+//      const result = await pool.query(`
+//      INSERT INTO users(name, email, password, role)
+//        VALUES($1, $2, $3, $4)
+//        RETURNING *
+//       `,
+//     [name, email, password, role] ,
+//     );
+//       //console.log(result);
+
+//     res.status(201).json({
+//        success: true,
+//         message: " User Created successfully!",
+//         data: result.rows[0],
+//     }); 
+//     } catch (error: any) {
+//       res.status(500).json({
+//         success: false,
+//         message: error.message,
+//         error: error,
+//     });
+//     }
+// });
+
+//create users
+app.post("/", async(req: Request, res:Response)=>{
+    //console.log(req.body);
+    const {name, email, password, role}= req.body;
+
+        res.status(201).json({
+       success: true,
+        message: " User Created successfully!",
+        data: {
+            name,
+            email,
+            password,
+            role
+        },
+    }); 
 })
 
 app.listen(port, () => {
