@@ -63,51 +63,36 @@ app.get('/', (req : Request, res : Response) => {
 })
 
 
-//create users
-// app.post("/api/users", async(req : Request, res: Response)=>{
-//     //console.log(req.body);
-//     // const body= req.body;
-//     const {name, email, password, role}= req.body;
 
-//     try {
-//      const result = await pool.query(`
-//      INSERT INTO users(name, email, password, role)
-//        VALUES($1, $2, $3, $4)
-//        RETURNING *
-//       `,
-//     [name, email, password, role] ,
-//     );
-//       //console.log(result);
 
-//     res.status(201).json({
-//        success: true,
-//         message: " User Created successfully!",
-//         data: result.rows[0],
-//     }); 
-//     } catch (error: any) {
-//       res.status(500).json({
-//         success: false,
-//         message: error.message,
-//         error: error,
-//     });
-//     }
-// });
-
-//create users
+//create users post method apply
 app.post("/", async(req: Request, res:Response)=>{
     //console.log(req.body);
     const {name, email, password, role}= req.body;
 
+   try {
+     const result = await pool.query(`
+     INSERT INTO users(name, email, password, role)
+       VALUES($1, $2, $3, $4)
+       RETURNING *
+      `,
+    [name, email, password, role] ,
+    );
+     // console.log(result);
+
         res.status(201).json({
        success: true,
         message: " User Created successfully!",
-        data: {
-            name,
-            email,
-            password,
-            role
-        },
+        data:result.rows[0],
     }); 
+   } catch (error: any) {
+          res.status(500).json({
+        success: false,
+        message: error.message,
+        error: error,
+    });
+    
+   }
 })
 
 app.listen(port, () => {
