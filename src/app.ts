@@ -3,19 +3,16 @@ import express, { type Application, type Request, type Response } from "express"
 //import config from "./config";
 import { initDB, pool } from "./db";
 import { userRoute } from "./modules/auth/auth.route";
+import { authRoute } from "./modules/user/user.route";
 //import { initDB, pool } from "./db";
 
 const app: Application = express()
 //const port = config.port
 //const port = 5000;
 
-
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }))
-
-
-
 
 //browser loading
 app.get('/', (req: Request, res: Response) => {
@@ -28,6 +25,8 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.use("/api/users", userRoute);
+
+app.use("/api/auth", authRoute )
 
 
 export default app 
