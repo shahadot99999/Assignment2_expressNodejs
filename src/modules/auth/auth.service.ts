@@ -13,9 +13,66 @@ const createUserIntoDb=async(payLoad: IUser)=>{
         return result
 };
 
+const getAllUsersFromDB = async()=>{
+     const result = await pool.query(`
+     
+      SELECT * FROM users
+      `);
+      return result;
+};
+
+
+const getSingleUsersFromDB = async(id : string)=>{
+    const result = await pool.query(`
+     SELECT * FROM users WHERE id=$1 
+      `,
+            [id],
+
+        );
+        return result;
+}
+
+
+const updateUsersFromDB = async (payLoad: IUser, id: string) => {
+
+    const {name, password, role}= payLoad;
+
+    const result = await pool.query(
+
+        `
+        UPDATE users 
+          SET 
+          name=COALESCE($1, name),
+           password=COALESCE($2, password), 
+            role=COALESCE($3, role)
+ 
+          WHERE id=$4
+           RETURNING *
+  
+             `,
+        [name, password, role, id],
+    );
+    return result;
+
+}
+
+const deleteUsersFromDB = async(id : string)=>{
+     const result = await pool.query(
+      `
+      DELETE FROM users WHERE id=$1
+      `,
+    [id],
+  );
+  return result;
+}
 
 export const userService={
     createUserIntoDb,
+    getAllUsersFromDB,
+    getSingleUsersFromDB,
+    updateUsersFromDB,
+    deleteUsersFromDB
+
 }
 
 
