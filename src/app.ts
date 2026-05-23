@@ -7,11 +7,13 @@ import { authRoute } from "./modules/user/user.route";
 //import { initDB, pool } from "./db";
 import fs from "fs";
 import logger from "./middleware/logger";
+import CookieParser from "cookie-parser"
 
 const app: Application = express()
 //const port = config.port
 //const port = 5000;
 
+app.use(CookieParser());
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }))
@@ -30,6 +32,7 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.use("/api/users", userRoute);
+//app.use("/api/auth", userRoute);
 
 app.use("/api/auth", authRoute )
 

@@ -25,8 +25,8 @@ if(userData.rows.length === 0){
 const user = userData.rows[0];
 //console.log(user);
 
-//const matchPassword = await bcrypt.compare(password, user.password);
-const matchPassword = (password === user.password);
+const matchPassword = await bcrypt.compare(password, user.password);
+//const matchPassword = (password === user.password);
     console.log("Do plain text passwords match?:", matchPassword);
 
 //console.log(matchPassword);
@@ -45,7 +45,10 @@ const JwtPayload = {
 const accessToken = jwt.sign(JwtPayload, config.secret as string, {
     expiresIn: "1d",
 });
-return {accessToken};
+
+
+
+return {accessToken };
 }
 
 export const authService = {

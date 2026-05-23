@@ -7,7 +7,7 @@ const logger = (req : Request, res: Response, next : NextFunction)=>{
     const log =`\n Method -> ${req.method} -  Time ->${Date.now()} -
     URL ->${req.url}\n` ;
     fs.appendFile("logger.txt", log, (err)=>{
-        console.log(err);
+        //console.log(err);
     })
     next();
 }

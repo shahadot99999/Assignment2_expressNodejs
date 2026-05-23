@@ -30,6 +30,7 @@ const createUser = async (req: Request, res: Response) => {
 
 //all users get method apply
 const getAllUsers = async (req: Request, res: Response) => {
+    console.log("Controller", req.user);
     try {
        const result = await userService.getAllUsersFromDB();
         res.status(200).json({

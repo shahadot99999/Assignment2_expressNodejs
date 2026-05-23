@@ -8,9 +8,17 @@ const loginUser =async(req : Request, res : Response)=>{
 
         const result = await authService.loginUserIntoDB(req.body);
 
+        // const {refreshToken }= result
+
+        // res.cookie("refreshToken", refreshToken,{
+        //     secure: false,
+        //     httpOnly: true,
+        //     sameSite: 'lax'
+        // })
+
          res.status(200).json({
             success: true,
-            message: " User Created successfully!",
+            message: " User logih successfully!",
             data: result,
         });
         
@@ -24,6 +32,9 @@ const loginUser =async(req : Request, res : Response)=>{
 
 }
 
+
+
 export const authController = {
-    loginUser
+    loginUser,
+    
 }
