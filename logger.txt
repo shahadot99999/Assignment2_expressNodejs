@@ -231,3 +231,123 @@ Method -> GET Time ->1779502970756 ->URL ->{req.url}
 
  Method -> GET -  Time ->1779531284317 -
     URL ->/api/users
+
+ Method -> POST -  Time ->1779533263412 -
+    URL ->/api/auth/login
+
+ Method -> GET -  Time ->1779533300734 -
+    URL ->/api/users
+
+ Method -> POST -  Time ->1779533571633 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779533910911 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779533924678 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779534262318 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779534304470 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779534361219 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779535789028 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779535851339 -
+    URL ->/api/issues
+
+ Method -> GET -  Time ->1779535922682 -
+    URL ->/favicon.ico
+
+ Method -> GET -  Time ->1779536034283 -
+    URL ->/api/issues?sort=newest&type=bug&status=open
+
+ Method -> GET -  Time ->1779536239990 -
+    URL ->/api/issues/1
+
+ Method -> PATCH -  Time ->1779536426528 -
+    URL ->/api/issues/1
+
+ Method -> DELETE -  Time ->1779536586905 -
+    URL ->/api/issues/1
+
+ Method -> POST -  Time ->1779536625503 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779536647705 -
+    URL ->/api/issues
+
+ Method -> GET -  Time ->1779536706224 -
+    URL ->/api/issues?sort=newest&type=bug&status=open
+
+ Method -> PATCH -  Time ->1779536854119 -
+    URL ->/api/issues/1
+
+ Method -> POST -  Time ->1779537144165 -
+    URL ->/api/users/auth/signup
+
+ Method -> GET -  Time ->1779542305806 -
+    URL ->/favicon.ico
+
+ Method -> GET -  Time ->1779542311084 -
+    URL ->/
+
+ Method -> POST -  Time ->1779543132603 -
+    URL ->/api/auth/signup
+
+ Method -> POST -  Time ->1779543993840 -
+    URL ->/api/users/auth/signup
+
+ Method -> POST -  Time ->1779544015924 -
+    URL ->/api/users/auth/signup
+
+ Method -> POST -  Time ->1779545014969 -
+    URL ->/api/users/auth/signup
+
+ Method -> GET -  Time ->1779552870316 -
+    URL ->/favicon.ico
+
+ Method -> POST -  Time ->1779552912734 -
+    URL ->/api/users/auth/signup
+
+ Method -> POST -  Time ->1779552990034 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779553035434 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779553116749 -
+    URL ->/api/auth/login
+
+ Method -> GET -  Time ->1779553154545 -
+    URL ->/api/users/25
+
+ Method -> POST -  Time ->1779553203332 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779553535810 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779553844098 -
+    URL ->/api/auth/signup
+
+ Method -> POST -  Time ->1779553943669 -
+    URL ->/
+
+ Method -> POST -  Time ->1779554031193 -
+    URL ->/api/users/auth/signup
+
+ Method -> POST -  Time ->1779554080843 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779554135361 -
+    URL ->/api/issues
+
+ Method -> GET -  Time ->1779554217237 -
+    URL ->/api/users/25
