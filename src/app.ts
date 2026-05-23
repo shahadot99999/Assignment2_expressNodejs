@@ -5,6 +5,8 @@ import { initDB, pool } from "./db";
 import { userRoute } from "./modules/auth/auth.route";
 import { authRoute } from "./modules/user/user.route";
 //import { initDB, pool } from "./db";
+import fs from "fs";
+import logger from "./middleware/logger";
 
 const app: Application = express()
 //const port = config.port
@@ -13,6 +15,9 @@ const app: Application = express()
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }))
+
+
+app.use(logger);
 
 //browser loading
 app.get('/', (req: Request, res: Response) => {
