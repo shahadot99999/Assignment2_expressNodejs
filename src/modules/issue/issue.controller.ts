@@ -64,7 +64,7 @@ const updateIssue = async (req: Request & { user?: any }, res: Response) => {
     // Role Enforcement authorization logic
     if (req.user.role !== 'maintainer') {
       if (currentIssue.reporter.id !== req.user.id) {
-        return res.status(43).json({ success: false, message: "Forbidden context access" });
+        return res.status(403).json({ success: false, message: "Forbidden context access" }); 
       }
       if (currentIssue.status !== 'open') {
         return res.status(409).json({ success: false, message: "Contributors can only update open issues" });
@@ -81,6 +81,35 @@ const updateIssue = async (req: Request & { user?: any }, res: Response) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+// const updateIssue = async (req: Request & { user?: any }, res: Response) => {
+//   try {
+//     const issueId = req.params.id;
+//     const currentIssue = await issueService.getSingleIssueFromDB(issueId as string);
+
+//     if (!currentIssue) {
+//       return res.status(404).json({ success: false, message: "Issue not found" });
+//     }
+
+//     // Role Enforcement authorization logic
+//     if (req.user.role !== 'maintainer') {
+//       if (currentIssue.reporter.id !== req.user.id) {
+//         return res.status(403).json({ success: false, message: "Forbidden context access" });
+//       }
+//       if (currentIssue.status !== 'open') {
+//         return res.status(409).json({ success: false, message: "Contributors can only update open issues" });
+//       }
+//     }
+
+//     const result = await issueService.updateIssueInDB(issueId as string, req.body);
+//     res.status(200).json({
+//       success: true,
+//       message: "Issue updated successfully",
+//       data: result,
+//     });
+//   } catch (error: any) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
 
 const deleteIssue = async (req: Request, res: Response) => {
   try {

@@ -351,3 +351,30 @@ Method -> GET Time ->1779502970756 ->URL ->{req.url}
 
  Method -> GET -  Time ->1779554217237 -
     URL ->/api/users/25
+
+ Method -> POST -  Time ->1779581586735 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779581640359 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779582447073 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779582488802 -
+    URL ->/api/issues
+
+ Method -> PATCH -  Time ->1779582639113 -
+    URL ->/api/issues/1
+
+ Method -> GET -  Time ->1779582652999 -
+    URL ->/api/issues?sort=newest&type=bug&status=open
+
+ Method -> POST -  Time ->1779582669994 -
+    URL ->/api/issues
+
+ Method -> POST -  Time ->1779582949301 -
+    URL ->/api/auth/login
+
+ Method -> POST -  Time ->1779582993522 -
+    URL ->/api/auth/login
